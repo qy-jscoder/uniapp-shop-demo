@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<good-list :goodList="goodList" :isReachBottom="isReachBottom"></good-list>
+		<good-list :goodList="goodList" @goodsItemClick="goodsItemClick" :isReachBottom="isReachBottom"></good-list>
 	</view>
 </template>
 
@@ -34,6 +34,11 @@
 					await this.getGoodList()
 					uni.stopPullDownRefresh()
 				},1000)
+			},
+			goodsItemClick(id){
+				uni.navigateTo({
+					url:'/pages/goodsDetail/goodsDetail?id='+id
+				})
 			}
 		},
 		onLoad() {
